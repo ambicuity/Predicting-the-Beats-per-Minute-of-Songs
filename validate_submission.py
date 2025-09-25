@@ -10,6 +10,14 @@ from pathlib import Path
 def validate_submission(submission_path: str, sample_path: str) -> bool:
     """Validate submission file format."""
     try:
+        # Check for line number formatting issues first
+        with open(submission_path, 'r') as f:
+            first_line = f.readline().strip()
+            if first_line.startswith(('1.', '2.', '3.')) or any(first_line.startswith(f'{i}.') for i in range(1, 10)):
+                print("❌ CSV file appears to have line numbers! First line:", first_line)
+                print("💡 Tip: Use fix_csv_format.py to remove line numbers")
+                return False
+        
         # Load files
         submission = pd.read_csv(submission_path)
         sample = pd.read_csv(sample_path)
