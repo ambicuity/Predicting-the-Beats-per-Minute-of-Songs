@@ -66,7 +66,8 @@ def main():
     # Validate all submission files
     submission_files = [
         "submission.csv",
-        "production_submission.csv"
+        "production_submission.csv",
+        "final_submission.csv"
     ]
     
     print("=== SUBMISSION VALIDATION ===\n")
