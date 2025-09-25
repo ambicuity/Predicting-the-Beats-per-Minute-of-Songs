@@ -74,28 +74,28 @@ def check_data():
 
 
 def run_best_model():
-    """Run the production BPM predictor."""
-    print("\n🚀 Running production BPM predictor...")
-    print("Expected runtime: 2-5 minutes")
-    print("Expected CV RMSE: ~9.46")
+    """Run the champion BPM predictor."""
+    print("\n🚀 Running champion BPM predictor...")
+    print("Expected runtime: 3-8 minutes")
+    print("Target: Beat 26.37960 RMSE")
     print("-" * 40)
     
     start_time = time.time()
     
     try:
-        # Import and run the production model
-        from production_bpm_predictor import ProductionBPMPredictor
+        # Import and run the champion model
+        from champion_bpm_predictor import ChampionBPMPredictor
         
-        predictor = ProductionBPMPredictor()
-        submission = predictor.run_pipeline()
+        predictor = ChampionBPMPredictor()
+        submission = predictor.run_champion_pipeline()
         
         end_time = time.time()
         runtime = end_time - start_time
         
         print("-" * 40)
-        print(f"✅ Model completed successfully!")
+        print(f"✅ Champion model completed successfully!")
         print(f"⏱️  Runtime: {runtime:.1f} seconds")
-        print(f"📁 Submission saved to: data/production_submission.csv")
+        print(f"📁 Submission saved to: data/champion_submission.csv")
         
         return True
         
@@ -112,7 +112,7 @@ def validate_output():
         from validate_submission import validate_submission
         
         is_valid = validate_submission(
-            "data/production_submission.csv", 
+            "data/champion_submission.csv", 
             "data/sample_submission.csv"
         )
         
@@ -141,17 +141,17 @@ def print_summary():
     print("• Feature engineering: 42 audio-focused features")
     
     print("\n📁 Output Files:")
-    print("• data/production_submission.csv - Main submission file")
+    print("• data/champion_submission.csv - Champion submission file")
     print("• data/eda_plots.png - Exploratory data analysis")
     
     print("\n🚀 Next Steps:")
-    print("1. Upload 'production_submission.csv' to Kaggle")
+    print("1. Upload 'champion_submission.csv' to Kaggle")
     print("2. Monitor leaderboard performance")
-    print("3. Consider ensemble with other approaches if needed")
+    print("3. Expected score should beat 26.37960")
     
     print("\n💡 Alternative Approaches:")
-    print("• Basic model: python bpm_predictor.py")
-    print("• Ultra-advanced: python advanced_bpm_predictor.py")
+    print("• Fast improved: python fast_improved_bpm_predictor.py")
+    print("• Ultra advanced: python optimized_bpm_predictor.py")
     
     print("\n🎯 Competition Target: ACHIEVED!")
     print("Expected score should beat 26.37960 significantly")
